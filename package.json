@@ -1,0 +1,10 @@
+{
+  "name": "issue-ibm-openapi-validator",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "ibm-openapi-validator": "^0.33.1"
+  },
+  "devDependencies": {}
+}

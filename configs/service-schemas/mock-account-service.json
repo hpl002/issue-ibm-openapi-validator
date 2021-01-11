@@ -1,0 +1,270 @@
+{
+  "requestbody": {
+    "age": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/age"
+          }
+        }
+      },
+      "description": "Create pet",
+      "required": true
+    }
+  },
+  "responses": {
+    "get": {
+      "200": {
+        "accounts": {
+          "description": "Returns array of accounts",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/accounts"
+              },
+              "examples": {
+                "scenario-1": {
+                  "summary": "List of accounts",
+                  "value": [
+                    {
+                      "id": 11,
+                      "type": "Mock Checking Account scenario-1"
+                    },
+                    {
+                      "id": 12,
+                      "type": "Mock Loan Account scenario-1"
+                    }
+                  ]
+                },
+                "scenario-2": {
+                  "summary": "List of accounts",
+                  "value": [
+                    {
+                      "id": 21,
+                      "type": "Mock Checking Account scenario-2"
+                    },
+                    {
+                      "id": 22,
+                      "type": "Mock Loan Account scenario-2"
+                    }
+                  ]
+                },
+                "scenario-3": {
+                  "summary": "List of accounts",
+                  "value": [
+                    {
+                      "id": 11123,
+                      "type": "Mock Checking Account"
+                    },
+                    {
+                      "id": 22376,
+                      "type": "Mock Loan Account"
+                    },
+                    {
+                      "id": 11456,
+                      "type": "Mock Business expenses account"
+                    },
+                    {
+                      "id": 22323,
+                      "type": "Mock Savings account"
+                    },
+                    {
+                      "id": 1184,
+                      "type": "Mock Business holdings account"
+                    },
+                    {
+                      "id": 22322,
+                      "type": "Moch Business savings account"
+                    },
+                    {
+                      "id": 11678,
+                      "type": "Mock Expired personal account"
+                    },
+                    {
+                      "id": 22354543,
+                      "type": "Mock Personal expenses account"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "account": {
+          "description": "Returns a specific account by id",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/account"
+              },
+              "examples": {
+                "scenario-1": {
+                  "summary": "Single account",
+                  "value": [
+                    {
+                      "id": 1123,
+                      "type": "Mock Checking Account"
+                    }
+                  ]
+                },
+                "scenario-2": {
+                  "summary": "Single account",
+                  "value": [
+                    {
+                      "id": 11,
+                      "type": "Mock Checking Account"
+                    }
+                  ]
+                },
+                "scenario-3": {
+                  "summary": "Single account",
+                  "value": [
+                    {
+                      "id": 1184,
+                      "type": "Mock Business holdings account"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "transactions": {
+          "description": "Array of transactions",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/transactions"
+              },
+              "examples": {
+                "scenario-1": {
+                  "summary": "List of transactions",
+                  "value": [
+                    {
+                      "id": 1,
+                      "type": "DEPOSIT",
+                      "amount": 100054
+                    },
+                    {
+                      "id": 2,
+                      "type": "WITHDRAWAL",
+                      "amount": 2505445
+                    }
+                  ]
+                },
+                "scenario-2": {
+                  "summary": "List of transactions",
+                  "value": [
+                    {
+                      "id": 1,
+                      "type": "MockDEPOSIT",
+                      "amount": 1000
+                    },
+                    {
+                      "id": 2,
+                      "type": "Mock WITHDRAWAL",
+                      "amount": 250
+                    },
+                    {
+                      "id": 3,
+                      "type": "Mock DEPOSIT",
+                      "amount": 1000243
+                    },
+                    {
+                      "id": 4,
+                      "type": "Mock WITHDRAWAL",
+                      "amount": 250234234
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "transaction": {
+          "description": "single transaction pertaining to account",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/transaction"
+              },
+              "examples": {
+                "simple": {
+                  "summary": "Transaction",
+                  "value": {
+                    "type": "DEPOSIT",
+                    "amount": 1000
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "id": {
+        "name": "id",
+        "in": "path",
+        "required": true,
+        "description": "id as integer",
+        "schema": {
+          "type": "integer"
+        }
+      }
+    },
+    "schemas": {
+      "age": {
+        "description": "age",
+        "type": "object",
+        "required": [
+          "age"
+        ],
+        "properties": {
+          "age": {
+            "type": "integer"
+          }
+        }
+      },
+      "account": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "type": {
+            "type": "string"
+          }
+        }
+      },
+      "accounts": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/account"
+        }
+      },
+      "transactions": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/transaction"
+        }
+      },
+      "transaction": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "type": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "integer"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Example API",
+    "description": "desc",
+    "version": "v1",
+    "contact": {
+      "email": "example@example.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3010/api",
+      "description": "Sandbox"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Account Service"
+    }
+  ],
+  "paths": {
+    "/accounts": {
+      "get": {
+        "tags": ["Account Service"],
+        "summary": "Gets all accounts",
+        "responses": {
+          "200": {
+            "$ref": "service-schemas/mock-account-service.json#/responses/get/200/accounts"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/accounts/{id}": {
+      "get": {
+        "tags": ["Account Service"],
+        "summary": "Gets a specific account by id",
+        "parameters": [
+          {
+            "$ref": "service-schemas/mock-account-service.json#/components/parameters/id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "service-schemas/mock-account-service.json#/responses/get/200/account"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    }
+  }
+}
