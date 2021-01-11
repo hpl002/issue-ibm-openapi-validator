@@ -1,5 +1,4 @@
 const validator = require("ibm-openapi-validator")
-const yaml = require('js-yaml');
 const fs   = require('fs');
 const $RefParser = require("@apidevtools/json-schema-ref-parser");
  
@@ -10,7 +9,7 @@ const $RefParser = require("@apidevtools/json-schema-ref-parser");
    const schema = await $RefParser.dereference("./configs/not-dereferenced.json");
    //save to fs
    fs.writeFileSync("./configs/fully-dereferenced.json", JSON.stringify(schema))
-   //run validation and print results// or, if inside `async` function
+   //run validation and print results// 
     const validationResults = await validator(schema);
     console.log("errors", validationResults.errors.length)
     console.log("warnings", validationResults.warnings.length)
